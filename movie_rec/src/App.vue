@@ -2,6 +2,7 @@
   <div id="app">
     <header>
       <h1>Movie Recommender</h1>
+      <router-link to="/register">Регистрация</router-link>
     </header>
 
     <main>
@@ -20,15 +21,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 #app {
+  min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 header,
 footer {
+  width: 100%;
   background-color: #1e1e1e;
   color: white;
   padding: 1rem;
@@ -37,6 +48,6 @@ footer {
 
 main {
   flex: 1;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 </style>

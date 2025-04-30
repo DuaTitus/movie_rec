@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     register() {
-      // Пока просто выводим в консоль
       console.log('Регистрация:', this.username, this.email, this.password)
     }
   }

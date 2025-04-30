@@ -1,6 +1,6 @@
 <template>
   <div class="movie-card">
-    <!-- Название, постер, рейтинг и т.п. -->
+    {{ title }}
   </div>
 </template>
 
@@ -8,7 +8,16 @@
 export default {
   name: 'MovieCard',
   props: {
-    // Пропсы для фильма
+    title: String
   }
 }
 </script>
+
+<style scoped>
+.movie-card {
+  background: #000000;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+</style>
