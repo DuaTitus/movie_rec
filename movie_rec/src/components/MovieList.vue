@@ -1,9 +1,12 @@
 <template>
   <div class="movie-list">
     <MovieCard
-      v-for="(movie, index) in movies"
-      :key="index"
+      v-for="movie in movies"
+      :key="movie.id"
       :title="movie.title"
+      :description="movie.description"
+      :poster="movie.poster"
+      :rating="movie.rating"
     />
   </div>
 </template>

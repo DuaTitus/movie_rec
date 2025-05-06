@@ -3,7 +3,7 @@
     <h1>Регистрация</h1>
     <p>Создайте аккаунт, чтобы получать персональные рекомендации.</p>
 
-    <form class="register-form" @submit.prevent="register">
+    <form class="register-form" @submit.prevent="handleRegister">
       <input type="text" placeholder="Имя пользователя" v-model="username" />
       <input type="email" placeholder="Email" v-model="email" />
       <input type="password" placeholder="Пароль" v-model="password" />
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/userStore';
+
 export default {
   name: 'RegisterView',
   data() {
@@ -23,8 +25,14 @@ export default {
     }
   },
   methods: {
-    register() {
-      console.log('Регистрация:', this.username, this.email, this.password)
+    handleRegister() {
+      const userStore = useUserStore()
+      userStore.registerUser({
+        username: this.username,
+        email: this.email,
+        password: this.password
+      })
+      this.$router.push('/')
     }
   }
 }
