@@ -2,16 +2,6 @@
   <div id="app">
     <header>
       <h1>Movie Recommender</h1>
-      <router-link
-        v-if="!isRegisterPage"
-        to="/register"
-        class="header-button"
-      >Регистрация</router-link>
-      <router-link
-        v-else
-        to="/"
-        class="header-button"
-      >Назад</router-link>
     </header>
 
     <main>
