@@ -4,9 +4,13 @@
       v-for="movie in movies"
       :key="movie.id"
       :title="movie.title"
+      :genres="movie.genres"
+      :year="movie.year"
       :description="movie.description"
       :poster="movie.poster"
       :rating="movie.rating"
+      :cast="movie.cast"
+      :age="movie.age"
     />
   </div>
 </template>

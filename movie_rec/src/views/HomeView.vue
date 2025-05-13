@@ -10,7 +10,7 @@
 import MovieList from '../components/MovieList.vue'
 import SearchBar from '../components/SearchBar.vue'
 import { useUserStore } from '@/stores/userStore'
-import rawMovies from '@/assets/movies.json'
+import rawMovies from '@/assets/Movie.json'
 
 export default {
   name: 'HomeView',
@@ -25,13 +25,17 @@ export default {
   },
   mounted() {
     this.movies = rawMovies
-      .filter(movie => movie.thumbnail && movie.extract)
+      .filter(movie => movie.Poster && movie.Plot)
       .map((movie, index) => ({
         id: index + 1,
-        title: movie.title,
-        description: movie.extract,
-        poster: movie.thumbnail,
-        rating: (Math.random() * 2 + 7).toFixed(1) // случайный рейтинг от 7.0 до 9.0
+        title: movie.Title,
+        description: movie.Plot,
+        poster: movie.Poster,
+        genres: movie.Genre,
+        year: movie.Year,
+        cast: movie.Actors,
+        rating: movie.imdbRating,
+        age: movie.Rated
       }))
   },
   setup() {
