@@ -5,7 +5,7 @@
       <h2 class="movie-title">{{ title }}</h2>
       <p><span class="movie-genres">Жанры:</span> {{ genres }}</p>
       <p><span class="movie-year">Год производства:</span> {{ year }}</p>
-      <p><span class="movie-description"></span>{{ description }}</p>
+      <p><span class="movie-description">Описание:</span> {{ description }}</p>
       <p><span class="movie-rating">Рейтинг:</span> {{ rating }}</p>
       <p><span class="movie-cast">В ролях:</span> {{ cast }}</p>
       <p><span class="movie-age">Возрастной рейтинг:</span> {{ age }}</p>
@@ -67,6 +67,7 @@ export default {
   color: #cccccc;
 }
 
+.movie-description,
 .movie-rating,
 .movie-genres,
 .movie-cast,
