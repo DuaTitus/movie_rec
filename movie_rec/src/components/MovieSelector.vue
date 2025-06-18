@@ -1,16 +1,12 @@
-<!-- src/components/MovieSelector.vue -->
 <template>
   <div class="movie-selector">
-    <h2>Выберите фильм для рекомендации</h2>
-    <select v-model="selectedId">
-      <option disabled value="">-- Выберите фильм --</option>
-      <option v-for="movie in movies" :key="movie.id" :value="movie.id">
-        {{ movie.title }}
+    <label for="movie-select">Выберите фильм для рекомендаций:</label>
+    <select id="movie-select" v-model="selectedId" @change="fetchRecommendations">
+      <option disabled value="">-- выберите фильм --</option>
+      <option v-for="movie in allMovies" :key="movie.imdbID" :value="movie.imdbID">
+        {{ movie.Title }}
       </option>
     </select>
-    <button @click="getRecommendations" :disabled="!selectedId">
-      Показать рекомендации
-    </button>
   </div>
 </template>
 
@@ -19,21 +15,23 @@ import { useRecommendationStore } from '@/stores/recommendation'
 
 export default {
   name: 'MovieSelector',
+  props: {
+    allMovies: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
-      selectedId: '',
-      movies: [
-        { id: 1, title: 'Inception' },
-        { id: 2, title: 'Interstellar' },
-        { id: 3, title: 'The Matrix' },
-        { id: 4, title: 'The Dark Knight' }
-      ]
+      selectedId: ''
     }
   },
   methods: {
-    getRecommendations() {
+    async fetchRecommendations() {
+      if (!this.selectedId) return
+
       const store = useRecommendationStore()
-      store.fetchRecommendations(this.selectedId)
+      await store.fetchRecommendationsById(this.selectedId)
     }
   }
 }
@@ -41,24 +39,19 @@ export default {
 
 <style scoped>
 .movie-selector {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 select {
   padding: 0.5rem;
-  margin-right: 1rem;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  background-color: #1e1e1e;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
 }
 </style>
