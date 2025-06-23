@@ -17,7 +17,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const response = await axios.post('http://localhost:5000/recommend', {
+        const response = await axios.post('http://localhost:8081/recommend', {
           id: movieId
         })
 
