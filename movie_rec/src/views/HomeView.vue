@@ -1,8 +1,8 @@
 <template>
   <div class="home-view">
 
-    <MovieSelector :allMovies="rawMovies" />
-
+    <MovieTitleSearch/>
+    <MovieFilter/>
     <p>Вот список рекомендованных фильмов:</p>
 
     <div v-if="loading">Загрузка рекомендаций...</div>
@@ -13,7 +13,8 @@
 
 <script>
 import MovieList from '../components/MovieList.vue'
-import MovieSelector from '../components/MovieSelector.vue'
+import MovieTitleSearch from '../components/MovieTitleSearch.vue'
+import MovieFilter from '@/components/MovieFilter.vue'
 
 import { useUserStore } from '@/stores/userStore'
 import { useRecommendationStore } from '@/stores/recommendation'
@@ -23,7 +24,8 @@ export default {
   name: 'HomeView',
   components: {
     MovieList,
-    MovieSelector
+    MovieTitleSearch,
+    MovieFilter
   },
   data() {
     return {
