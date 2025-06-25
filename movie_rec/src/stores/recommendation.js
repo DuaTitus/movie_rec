@@ -17,7 +17,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const response = await axios.post('http://localhost:8081/recommend', {
+        const response = await axios.post('http://localhost:8081/api/recommendations', {
           id: movieId
         })
 
@@ -39,7 +39,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const res = await axios.get('http://localhost:5000/recommend/title', {
+        const res = await axios.get('http://localhost:8081/api/recommendations', {
           params: { title }
         })
 
@@ -61,7 +61,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const response = await axios.get('http://localhost:5000/popular')
+        const response = await axios.get('за это отвечает http://localhost:8080/api/movie')
         if (Array.isArray(response.data)) {
           this.recommendations = response.data
         } else {
@@ -80,7 +80,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const response = await axios.get('http://localhost:5000/filter', {
+        const response = await axios.get('за это отвечает http://localhost:8080/api/movie', {
           params: { year, genre }
         })
         if (Array.isArray(response.data)) {
