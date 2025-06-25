@@ -61,7 +61,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const response = await axios.get('/popular')
+        const response = await axios.get('http://localhost:5000/popular')
         if (Array.isArray(response.data)) {
           this.recommendations = response.data
         } else {
@@ -80,7 +80,7 @@ export const useRecommendationStore = defineStore('recommendation', {
       this.recommendations = []
 
       try {
-        const response = await axios.get('/filter', {
+        const response = await axios.get('http://localhost:5000/filter', {
           params: { year, genre }
         })
         if (Array.isArray(response.data)) {
